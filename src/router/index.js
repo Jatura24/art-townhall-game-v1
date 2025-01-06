@@ -8,6 +8,7 @@ import { createRouter, createWebHistory } from 'vue-router'
     import SwapPage from '../pages/SwapPage.vue'
     import HistoryPage from '../pages/HistoryPage.vue'
     import RankingPage from '../pages/RankingPage.vue'
+    import MonopolyPage from '../pages/MonopolyPage.vue'
 
     const routes = [
       {
@@ -57,6 +58,11 @@ import { createRouter, createWebHistory } from 'vue-router'
         path: '/ranking',
         name: 'Ranking',
         component: RankingPage
+      },
+      {
+        path: '/monopoly',
+        name: 'Monopoly',
+        component: MonopolyPage
       }
     ]
 

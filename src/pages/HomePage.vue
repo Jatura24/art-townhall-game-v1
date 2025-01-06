@@ -21,14 +21,14 @@
               #{{ ranking }}
             </div>
             <h2 class="text-white text-sm mb-1">Total Win</h2>
-            <div class="text-white text-3xl font-bold">100 Rounds</div>
+            <div class="text-white text-3xl font-bold">{{ userStore.totalWinRounds }} Rounds</div>
           </div>
           <h1 class="text-4xl font-bold mb-4">Challenge</h1>
           <div class="flex flex-wrap justify-center gap-4">
             <div v-for="challenge in challenges" :key="challenge.id" class="bg-white p-4 rounded-lg shadow-md w-40 text-center cursor-pointer" @click="goToChallenge(challenge.title)">
               <div class="text-4xl mb-2">{{ challenge.icon }}</div>
               <h3 class="font-bold text-gray-700">{{ challenge.title }}</h3>
-              <p class="text-gray-500">{{ challenge.description }}</p>
+              <p class="text-gray-500">{{ challenge.gameCount }} Game</p>
             </div>
           </div>
         </div>
@@ -55,25 +55,25 @@
               id: 1,
               icon: '📚',
               title: 'Quizzes',
-              description: 'Get free points'
+              gameCount: 120
             },
             {
               id: 2,
               icon: '💰',
               title: 'Monopoly',
-              description: 'Play to Earn'
+              gameCount: 60
             },
             {
               id: 3,
               icon: '💡',
               title: 'Money Helper',
-              description: 'Check your Credits'
+              gameCount: 90
             },
             {
               id: 4,
               icon: '🔄',
               title: 'Swap',
-              description: 'Point to Snack'
+              gameCount: 75
             }
           ]
         };
@@ -86,6 +86,8 @@
             this.$router.push('/money-helper');
           } else if (challengeTitle === 'Swap') {
             this.$router.push('/swap');
+          } else if (challengeTitle === 'Monopoly') {
+            this.$router.push('/monopoly');
           }
         }
       }
