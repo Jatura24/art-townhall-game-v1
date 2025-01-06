@@ -1,11 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router'
-    import RegistrationPage from '../components/RegistrationPage.vue'
-    import HomePage from '../components/HomePage.vue'
-    import QuizzesPage from '../components/QuizzesPage.vue'
-    import SummaryPage from '../components/SummaryPage.vue'
-    import MoneyHelperPage from '../components/MoneyHelperPage.vue'
-    import MoneyHelperSummaryPage from '../components/MoneyHelperSummaryPage.vue'
-    import SwapPage from '../components/SwapPage.vue'
+    import RegistrationPage from '../pages/RegistrationPage.vue'
+    import HomePage from '../pages/HomePage.vue'
+    import QuizzesPage from '../pages/QuizzesPage.vue'
+    import SummaryPage from '../pages/SummaryPage.vue'
+    import MoneyHelperPage from '../pages/MoneyHelperPage.vue'
+    import MoneyHelperSummaryPage from '../pages/MoneyHelperSummaryPage.vue'
+    import SwapPage from '../pages/SwapPage.vue'
+    import HistoryPage from '../pages/HistoryPage.vue'
+    import RankingPage from '../pages/RankingPage.vue'
 
     const routes = [
       {
@@ -45,6 +47,16 @@ import { createRouter, createWebHistory } from 'vue-router'
         path: '/swap',
         name: 'Swap',
         component: SwapPage
+      },
+      {
+        path: '/history',
+        name: 'History',
+        component: HistoryPage
+      },
+      {
+        path: '/ranking',
+        name: 'Ranking',
+        component: RankingPage
       }
     ]
 
