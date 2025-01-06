@@ -10,15 +10,15 @@
             <div class="mb-4">
               <div class="flex justify-between items-center">
                 <span class="text-gray-700">Correct Answers</span>
-                <span class="text-gray-700">{{ mainStore.correctAnswers }}/{{ mainStore.totalQuestions }}</span>
+                <span class="text-gray-700">{{ quizStore.correctAnswers }}/{{ quizStore.totalQuestions }}</span>
               </div>
               <div class="w-full bg-gray-200 rounded-full h-2.5 mt-2">
-                <div class="bg-green-500 h-2.5 rounded-full" :style="{ width: mainStore.accuracy + '%' }"></div>
+                <div class="bg-green-500 h-2.5 rounded-full" :style="{ width: quizStore.accuracy + '%' }"></div>
               </div>
             </div>
             <div class="mb-4 flex justify-between items-center">
               <span class="text-gray-700">Accuracy</span>
-              <span class="text-gray-700">{{ mainStore.accuracy }}%</span>
+              <span class="text-gray-700">{{ quizStore.accuracy }}%</span>
             </div>
             <div class="mb-6 flex justify-between items-center">
               <span class="text-gray-700">Tokens Earned</span>
@@ -31,20 +31,22 @@
     </template>
 
     <script>
-    import { useMainStore } from '../store';
+    import { useQuizStore } from '../store/quiz';
+    import { useUserStore } from '../store/user';
     export default {
       setup() {
-        const mainStore = useMainStore();
-        return { mainStore };
+        const quizStore = useQuizStore();
+        const userStore = useUserStore();
+        return { quizStore, userStore };
       },
       computed: {
         tokensEarned() {
-          return this.mainStore.correctAnswers * 10;
+          return this.quizStore.correctAnswers * 10;
         }
       },
       methods: {
         backToHome() {
-          this.mainStore.resetState();
+          this.quizStore.resetState();
           this.$router.push('/home');
         }
       }

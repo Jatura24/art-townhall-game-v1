@@ -19,7 +19,8 @@
     </template>
 
     <script>
-    import { useMainStore } from '../store';
+    import { useMoneyHelperStore } from '../store/moneyHelper';
+    import { useUserStore } from '../store/user';
 
     export default {
       data() {
@@ -82,9 +83,11 @@
       },
       methods: {
         selectAnswer(selectedOption) {
-          const store = useMainStore();
+          const moneyHelperStore = useMoneyHelperStore();
+          const userStore = useUserStore();
           if (selectedOption === this.questions[this.currentQuestion].answer) {
-            store.setCorrectAnswers(store.correctAnswers + 1);
+            moneyHelperStore.setCorrectAnswers(moneyHelperStore.correctAnswers + 1);
+            userStore.addPointsHistory('Money Helper correct answer', 10);
           }
           this.nextQuestion();
         },
@@ -100,8 +103,8 @@
           this.progress = ((this.currentQuestion + 1) / this.questions.length) * 100;
         },
         goToSummary() {
-          const store = useMainStore();
-          store.setTotalQuestions(this.questions.length);
+          const moneyHelperStore = useMoneyHelperStore();
+          moneyHelperStore.setTotalQuestions(this.questions.length);
           this.$router.push('/money-helper-summary');
         }
       }

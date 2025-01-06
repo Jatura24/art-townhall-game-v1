@@ -25,7 +25,8 @@
     </template>
 
     <script>
-    import { useMainStore } from '../store';
+    import { useQuizStore } from '../store/quiz';
+    import { useUserStore } from '../store/user';
 
     export default {
       data() {
@@ -80,9 +81,9 @@
           }, 1000);
         },
         selectAnswer(selectedOption) {
-          const store = useMainStore();
+          const quizStore = useQuizStore();
           if (selectedOption === this.questions[this.currentQuestion].answer) {
-            store.setCorrectAnswers(store.correctAnswers + 1);
+            quizStore.setCorrectAnswers(quizStore.correctAnswers + 1);
           }
           this.nextQuestion();
         },
@@ -102,8 +103,10 @@
         },
         goToSummary() {
           clearInterval(this.timer);
-          const store = useMainStore();
-          store.setTotalQuestions(this.questions.length);
+          const quizStore = useQuizStore();
+          const userStore = useUserStore();
+          quizStore.setTotalQuestions(this.questions.length);
+          userStore.addPointsHistory('Quiz completed', quizStore.correctAnswers * 10);
           this.$router.push('/summary');
         }
       }

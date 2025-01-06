@@ -21,19 +21,19 @@
     </template>
 
     <script>
-    import { useMainStore } from '../store';
+    import { useMoneyHelperStore } from '../store/moneyHelper';
     export default {
       setup() {
-        const mainStore = useMainStore();
+        const moneyHelperStore = useMoneyHelperStore();
         return {
-          ranking: mainStore.ranking,
-          advice: mainStore.advice
+          ranking: moneyHelperStore.ranking,
+          advice: moneyHelperStore.advice
         };
       },
       methods: {
         backToHome() {
-          const mainStore = useMainStore();
-          mainStore.resetState();
+          const moneyHelperStore = useMoneyHelperStore();
+          moneyHelperStore.resetState();
           this.$router.push('/home');
         }
       }

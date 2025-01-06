@@ -18,6 +18,8 @@
     </template>
 
     <script>
+    import { useUserStore } from '../store/user';
+
     export default {
       data() {
         return {
@@ -29,12 +31,13 @@
       methods: {
         register() {
           if (this.name.trim() !== '') {
+            const userStore = useUserStore();
             this.$router.push({
               name: 'Home',
               params: {
                 name: this.name,
                 emoji: this.selectedEmoji,
-                points: 560,
+                points: userStore.currentPoints,
                 ranking: 12
               }
             });
