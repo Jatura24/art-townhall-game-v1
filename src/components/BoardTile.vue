@@ -3,12 +3,12 @@
         class="board-tile"
         :class="[getTileColor(tile.type), isActive ? 'ring-2 ring-indigo-500' : '']"
       >
-        <div class="flex items-center justify-between mb-1 px-2">
+        <div class="flex items-center justify-between mb-1 px-1">
           <span class="font-bold text-xs">{{ tile.name }}</span>
           <span v-html="getTileIcon(tile.type)"></span>
         </div>
-        <p class="text-[10px] text-gray-600 mb-1 line-clamp-2 px-2">{{ tile.description }}</p>
-        <p class="text-xs font-semibold px-2">${{ Math.abs(tile.value).toLocaleString() }}</p>
+        <p class="text-[10px] text-gray-600 mb-1 line-clamp-2 px-1">{{ tile.description }}</p>
+        <p class="text-xs font-semibold px-1">${{ Math.abs(tile.value).toLocaleString() }}</p>
 
         <div v-if="players.length > 0" class="absolute -top-2 -right-2 flex gap-1">
           <PlayerToken
@@ -83,6 +83,5 @@
     .board-tile {
       border: 1px solid #e2e8f0;
       position: relative;
-      border-radius: 0.5rem;
     }
     </style>

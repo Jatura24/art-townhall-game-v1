@@ -5,8 +5,7 @@ import { defineStore } from 'pinia';
         currentPoints: 560,
         pointsHistory: [],
         userName: '',
-        userEmoji: '😀',
-        totalWinRounds: 0
+        userEmoji: '😀'
       }),
       actions: {
         addPointsHistory(description, points) {
@@ -22,9 +21,6 @@ import { defineStore } from 'pinia';
         },
         setUserEmoji(emoji) {
           this.userEmoji = emoji;
-        },
-        setTotalWinRounds(totalWinRounds) {
-          this.totalWinRounds = totalWinRounds;
         }
       }
     });

@@ -6,7 +6,7 @@
             No history yet.
           </div>
           <div v-else class="space-y-4">
-            <div v-for="(item, index) in userStore.pointsHistory" :key="index" class="bg-white p-4 rounded-lg shadow-md">
+            <div v-for="(item, index) in reversedHistory" :key="index" class="bg-white p-4 rounded-lg shadow-md">
               <div class="flex justify-between items-center">
                 <span class="font-semibold">{{ item.description }}</span>
                 <span :class="{'text-green-500': item.points > 0, 'text-red-500': item.points < 0}">{{ item.points > 0 ? '+' : '' }}{{ item.points }}</span>
@@ -25,6 +25,11 @@
       setup() {
         const userStore = useUserStore();
         return { userStore };
+      },
+      computed: {
+        reversedHistory() {
+          return [...this.userStore.pointsHistory].reverse();
+        }
       }
     };
     </script>

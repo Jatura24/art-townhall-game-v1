@@ -2,8 +2,8 @@
       <div class="flex flex-col min-h-screen bg-gray-100">
         <div class="container mx-auto p-4 flex-grow flex flex-col items-center">
           <h1 class="text-3xl font-bold mb-4 text-center">Fintech Express</h1>
-          <div class="relative bg-gray-800 rounded-2xl mb-4" style="width: 550px; height: 550px; padding: 10px 20px;">
-            <div class="absolute top-0 left-0 w-full h-full" style="display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(5, 1fr); gap: 0px;">
+          <div class="relative bg-gray-800 rounded-2xl mb-4" style="width: 500px; height: 500px;">
+            <div class="absolute top-0 left-0 w-full h-full" style="display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(4, 1fr);">
               <div class="col-start-1 col-end-2 row-start-1 row-end-2">
                 <BoardTile
                   :tile="tiles[0]"
@@ -25,63 +25,63 @@
                   :isActive="currentTile === tiles[2].id"
                 />
               </div>
-              <div class="col-start-1 col-end-2 row-start-2 row-end-3">
+              <div class="col-start-4 col-end-5 row-start-1 row-end-2">
                 <BoardTile
                   :tile="tiles[3]"
                   :players="getPlayersOnTile(tiles[3].id)"
                   :isActive="currentTile === tiles[3].id"
                 />
               </div>
-              <div class="col-start-3 col-end-4 row-start-2 row-end-3">
+              <div class="col-start-1 col-end-2 row-start-2 row-end-3">
                 <BoardTile
                   :tile="tiles[4]"
                   :players="getPlayersOnTile(tiles[4].id)"
                   :isActive="currentTile === tiles[4].id"
                 />
               </div>
-              <div class="col-start-1 col-end-2 row-start-3 row-end-4">
+              <div class="col-start-4 col-end-5 row-start-2 row-end-3">
                 <BoardTile
                   :tile="tiles[5]"
                   :players="getPlayersOnTile(tiles[5].id)"
                   :isActive="currentTile === tiles[5].id"
                 />
               </div>
-              <div class="col-start-3 col-end-4 row-start-3 row-end-4">
+              <div class="col-start-1 col-end-2 row-start-3 row-end-4">
                 <BoardTile
                   :tile="tiles[6]"
                   :players="getPlayersOnTile(tiles[6].id)"
                   :isActive="currentTile === tiles[6].id"
                 />
               </div>
-              <div class="col-start-1 col-end-2 row-start-4 row-end-5">
+              <div class="col-start-4 col-end-5 row-start-3 row-end-4">
                 <BoardTile
                   :tile="tiles[7]"
                   :players="getPlayersOnTile(tiles[7].id)"
                   :isActive="currentTile === tiles[7].id"
                 />
               </div>
-              <div class="col-start-3 col-end-4 row-start-4 row-end-5">
+              <div class="col-start-1 col-end-2 row-start-4 row-end-5">
                 <BoardTile
                   :tile="tiles[8]"
                   :players="getPlayersOnTile(tiles[8].id)"
                   :isActive="currentTile === tiles[8].id"
                 />
               </div>
-              <div class="col-start-1 col-end-2 row-start-5 row-end-6">
+              <div class="col-start-2 col-end-3 row-start-4 row-end-5">
                 <BoardTile
                   :tile="tiles[9]"
                   :players="getPlayersOnTile(tiles[9].id)"
                   :isActive="currentTile === tiles[9].id"
                 />
               </div>
-              <div class="col-start-2 col-end-3 row-start-5 row-end-6">
+              <div class="col-start-3 col-end-4 row-start-4 row-end-5">
                 <BoardTile
                   :tile="tiles[10]"
                   :players="getPlayersOnTile(tiles[10].id)"
                   :isActive="currentTile === tiles[10].id"
                 />
               </div>
-              <div class="col-start-3 col-end-4 row-start-5 row-end-6">
+              <div class="col-start-4 col-end-5 row-start-4 row-end-5">
                 <BoardTile
                   :tile="tiles[11]"
                   :players="getPlayersOnTile(tiles[11].id)"
@@ -121,16 +121,6 @@
             </div>
           </div>
         </div>
-        <div v-if="showResultDialog" class="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex items-center justify-center">
-          <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
-            <div class="text-center mb-6">
-              <span class="text-5xl">🎉</span>
-              <h2 class="text-3xl font-bold mt-2">Game Over!</h2>
-              <p class="text-gray-600">{{ gameResult }}</p>
-            </div>
-            <button @click="backToHome" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full">Back to Home</button>
-          </div>
-        </div>
       </div>
     </template>
 
@@ -152,8 +142,6 @@
           currentPlayer: 'player1',
           currentTile: 1,
           diceResult: null,
-          showResultDialog: false,
-          gameResult: '',
           tiles: [
             {
               id: 1,
@@ -249,8 +237,7 @@
             ai1: 1
           },
           playerMoney: 10000,
-          aiMoney: 10000,
-          totalWinRounds: 0
+          aiMoney: 10000
         };
       },
       methods: {
@@ -291,7 +278,7 @@
           this.currentTurn++;
           this.currentPlayer = this.currentPlayer === 'player1' ? 'ai1' : 'player1';
           if (this.playerMoney < 0 || this.aiMoney < 0 || this.currentTurn > 15) {
-            this.endGame();
+            alert('Game Over!');
             return;
           }
           if (this.currentPlayer === 'ai1') {
@@ -299,30 +286,6 @@
               this.rollDice();
             }, 1000);
           }
-        },
-        endGame() {
-          let winner = null;
-          if (this.playerMoney > this.aiMoney) {
-            winner = 'player1';
-            this.userStore.addPointsHistory('Monopoly Win', 100);
-            this.totalWinRounds++;
-            this.gameResult = 'You Win!';
-          } else if (this.aiMoney > this.playerMoney) {
-            winner = 'ai1';
-            if (this.playerMoney >= 100) {
-              this.userStore.addPointsHistory('Monopoly Lose', -100);
-            } else {
-              this.userStore.addPointsHistory('Monopoly Lose', this.playerMoney * -1);
-            }
-            this.gameResult = 'AI Investor Wins!';
-          } else {
-            this.gameResult = 'It\'s a tie!';
-          }
-          this.showResultDialog = true;
-          this.userStore.setTotalWinRounds(this.totalWinRounds);
-        },
-        backToHome() {
-          this.$router.push('/home');
         }
       }
     };

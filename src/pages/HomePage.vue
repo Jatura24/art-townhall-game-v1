@@ -21,14 +21,14 @@
               #{{ ranking }}
             </div>
             <h2 class="text-white text-sm mb-1">Total Win</h2>
-            <div class="text-white text-3xl font-bold">{{ userStore.totalWinRounds }} Rounds</div>
+            <div class="text-white text-3xl font-bold">100 Rounds</div>
           </div>
           <h1 class="text-4xl font-bold mb-4">Challenge</h1>
           <div class="flex flex-wrap justify-center gap-4">
             <div v-for="challenge in challenges" :key="challenge.id" class="bg-white p-4 rounded-lg shadow-md w-40 text-center cursor-pointer" @click="goToChallenge(challenge.title)">
               <div class="text-4xl mb-2">{{ challenge.icon }}</div>
               <h3 class="font-bold text-gray-700">{{ challenge.title }}</h3>
-              <p class="text-gray-500">{{ challenge.gameCount }} Game</p>
+              <p class="text-gray-500">{{ challenge.description }}</p>
             </div>
           </div>
         </div>
@@ -55,25 +55,25 @@
               id: 1,
               icon: '📚',
               title: 'Quizzes',
-              gameCount: 120
+              description: 'Quiz to Earn'
             },
             {
               id: 2,
               icon: '💰',
               title: 'Monopoly',
-              gameCount: 60
+              description: 'Play to Earn'
             },
             {
               id: 3,
               icon: '💡',
               title: 'Money Helper',
-              gameCount: 90
+              description: 'Are you rich?'
             },
             {
               id: 4,
               icon: '🔄',
               title: 'Swap',
-              gameCount: 75
+              description: 'Point to Snack'
             }
           ]
         };
